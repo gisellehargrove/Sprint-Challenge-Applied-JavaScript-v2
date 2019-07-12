@@ -51,12 +51,14 @@ const cardCreator = (options) => {
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response => {
   const articles = response.data.articles;
+  // create an array of the keys in response.data.articles
   const categories = Object.keys(response.data.articles);
 
+  // loop through each category
   categories.forEach(category => {
+    // loop again through each article object and create a card for each one
     articles[category].forEach(article => {
       cardCreator(article);
     });
   });
-
 });
