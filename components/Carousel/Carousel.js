@@ -27,7 +27,7 @@ const carouselCreator = () => {
   const leftButton = document.createElement('div');
   leftButton.classList.add('left-button');
   leftButton.textContent = '<';
-  
+
   leftButton.addEventListener('click', () => {
     if(currentIndex === 0) {
       currentIndex = images.length - 1;
@@ -62,9 +62,6 @@ const carouselCreator = () => {
 
   carousel.appendChild(leftButton);
   carousel.appendChild(image);
-  // carousel.appendChild(image2);
-  // carousel.appendChild(image3);
-  // carousel.appendChild(image4);
   carousel.appendChild(rightButton);
 
   carouselContainer.appendChild(carousel);
