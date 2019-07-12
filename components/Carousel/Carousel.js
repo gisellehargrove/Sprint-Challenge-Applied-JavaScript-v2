@@ -27,7 +27,7 @@ const carouselCreator = () => {
   const leftButton = document.createElement('div');
   leftButton.classList.add('left-button');
   leftButton.textContent = '<';
-  leftButton.addEventListener(() => {
+  leftButton.addEventListener('click', () => {
 
   });
 
@@ -45,11 +45,15 @@ const carouselCreator = () => {
   const rightButton = document.createElement('div');
   rightButton.classList.add('right-button');
   rightButton.textContent = '>';
-  rightButton.addEventListener(() => {
-
+  rightButton.addEventListener('click', () => {
+    
   });
 
   carousel.appendChild(leftButton);
+  carousel.appendChild(image1);
+  carousel.appendChild(image2);
+  carousel.appendChild(image3);
+  carousel.appendChild(image4);
   carousel.appendChild(rightButton);
 
   carouselContainer.appendChild(carousel);
