@@ -27,33 +27,44 @@ const carouselCreator = () => {
   const leftButton = document.createElement('div');
   leftButton.classList.add('left-button');
   leftButton.textContent = '<';
+  
   leftButton.addEventListener('click', () => {
-
+    if(currentIndex === 0) {
+      currentIndex = images.length - 1;
+    } else {
+      currentIndex--;
+    }
+    image.src = images[currentIndex];
   });
 
-  const image1 = document.createElement('img');
-  image1.src = './assets/carousel/mountains.jpeg';
-  const image2 = document.createElement('img');
-  image2.src = './assets/carousel/computer.jpeg';
+  const images = [
+    './assets/carousel/mountains.jpeg',
+    './assets/carousel/computer.jpeg',
+    './assets/carousel/trees.jpeg',
+    './assets/carousel/turntable.jpeg'
+  ]
 
-  const image3 = document.createElement('img');
-  image3.src = './assets/carousel/trees.jpeg';
-
-  const image4 = document.createElement('img');
-  image4.src = './assets/carousel/turntable.jpeg';
+  const image = document.createElement('img');
+  image.src = images[currentIndex];
 
   const rightButton = document.createElement('div');
   rightButton.classList.add('right-button');
   rightButton.textContent = '>';
+
   rightButton.addEventListener('click', () => {
-    
+    if(currentIndex === images.length - 1) {
+      currentIndex = 0;
+    } else {
+      currentIndex++;
+    }
+    image.src = images[currentIndex];
   });
 
   carousel.appendChild(leftButton);
-  carousel.appendChild(image1);
-  carousel.appendChild(image2);
-  carousel.appendChild(image3);
-  carousel.appendChild(image4);
+  carousel.appendChild(image);
+  // carousel.appendChild(image2);
+  // carousel.appendChild(image3);
+  // carousel.appendChild(image4);
   carousel.appendChild(rightButton);
 
   carouselContainer.appendChild(carousel);
