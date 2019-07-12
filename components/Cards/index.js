@@ -18,10 +18,11 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-const cardCreator = (options) => {
+const cardCreator = (options, category) => {
   const cardsContainer = document.querySelector('.cards-container');
   const card = document.createElement('div');
   card.classList.add('card');
+  card.dataset.category = category;
 
   const headline = document.createElement('div');
   headline.classList.add('headline');
@@ -58,7 +59,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response =
   categories.forEach(category => {
     // loop again through each article object and create a card for each one
     articles[category].forEach(article => {
-      cardCreator(article);
+      cardCreator(article, category);
     });
   });
 });
