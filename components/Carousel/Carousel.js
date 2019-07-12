@@ -57,7 +57,11 @@ const carouselCreator = () => {
     } else {
       currentIndex++;
     }
-    image.src = images[currentIndex];
+    image.classList.add('slide-right');
+    setTimeout(() => {
+      image.src = images[currentIndex];
+      image.classList.remove('slide-right');
+    }, 2000);
   });
 
   carousel.appendChild(leftButton);
