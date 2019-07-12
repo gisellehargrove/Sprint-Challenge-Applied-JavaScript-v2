@@ -32,3 +32,5 @@ function Header() {
 
   return headerElem;
 }
+
+Header();
