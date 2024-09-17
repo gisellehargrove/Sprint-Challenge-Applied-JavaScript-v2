@@ -17,3 +17,49 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+const cardCreator = (options, category) => {
+  const cardsContainer = document.querySelector('.cards-container');
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.category = category;
+
+  const headline = document.createElement('div');
+  headline.classList.add('headline');
+  headline.textContent = options.headline;
+  card.appendChild(headline);
+
+  const authorContainer = document.createElement('div');
+  authorContainer.classList.add('author');
+
+  const imgContainer = document.createElement('div');
+  imgContainer.classList.add('img-container');
+
+  const imgElem = document.createElement('img');
+  imgElem.src = options.authorPhoto;
+
+  const authorName = document.createElement('span');
+  authorName.textContent = 'By ' + options.authorName;
+
+  imgContainer.appendChild(imgElem);
+  authorContainer.appendChild(imgContainer);
+  authorContainer.appendChild(authorName);
+  card.appendChild(authorContainer);
+  cardsContainer.appendChild(card);
+
+  return card;
+};
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response => {
+  const articles = response.data.articles;
+  // create an array of the keys in response.data.articles
+  const categories = Object.keys(response.data.articles);
+
+  // loop through each category
+  categories.forEach(category => {
+    // loop again through each article object and create a card for each one
+    articles[category].forEach(article => {
+      cardCreator(article, category);
+    });
+  });
+});
